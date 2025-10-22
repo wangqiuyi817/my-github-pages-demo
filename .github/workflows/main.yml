@@ -3,17 +3,17 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main   # 监控 main 分支
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: my-github-pages-demo
+          publish_dir: ./public   # 指定你的网页文件夹
